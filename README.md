@@ -50,3 +50,12 @@ tab lists requests sent from the site.
 - **Colors:** Violet `#8B5CF6` (deep `#6D28D9`), Amber `#FFC21A`, Coral `#E8694C`, Lavender `#B9A3FF`, near-black `#07060C`, text `#F4F2FB`.
 - **Type:** Manrope (Latin headings), Inter (Latin body), Readex Pro / IBM Plex Sans Arabic (Arabic).
 - **Highlight rule:** in the dashboard headline, wrap the key phrase in `[brackets]` to highlight it.
+
+## Deploy (GitHub Pages)
+
+Live at **https://mostafavipecoder.github.io/CV/** (dashboard: `/CV/#/admin`).
+
+Every push to `main` builds and deploys via `.github/workflows/deploy.yml`.
+Build-time settings live in the repo's *Settings → Secrets and variables → Actions → Variables*:
+`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_CONTACT_FORM_URL` (optional `VITE_GA_ID`).
+Content edits from the dashboard go straight to Supabase — no redeploy needed.
