@@ -1,0 +1,119 @@
+@import 'tailwindcss';
+
+/*
+ * Brand: matches the LinkedIn cover & talks — dark stage, electric violet, amber highlights.
+ * "Leaf" = violet (primary), "Sun" = amber (highlight), "Sky" = lavender, "Berry" = coral.
+ * Token names are kept from earlier themes so components stay unchanged.
+ */
+@theme {
+  --font-display: 'Manrope', 'Readex Pro', system-ui, sans-serif;
+  --font-sans: 'Inter', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+
+  --color-ink: #f4f2fb;
+  --color-ink-soft: #c8c4da;
+  --color-muted: #8e89a8;
+  --color-paper: #07060c;
+  --color-paper-deep: #0d0b16;
+  --color-card: #13111f;
+  --color-line: #27233b;
+
+  --color-leaf: #8b5cf6;
+  --color-leaf-dark: #6d28d9;
+  --color-leaf-soft: #1e1636;
+  --color-sun: #ffc21a;
+  --color-sun-dark: #ffc21a;
+  --color-sun-soft: #2a2210;
+  --color-sky: #b9a3ff;
+  --color-sky-dark: #a48bff;
+  --color-sky-soft: #1b1830;
+  --color-berry: #e8694c;
+  --color-berry-dark: #c9533a;
+  --color-berry-soft: #2a1612;
+
+  --color-danger: #ff6b5b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  [dir='rtl'] body {
+    line-height: 1.8;
+  }
+  [dir='rtl'] h1,
+  [dir='rtl'] h2,
+  [dir='rtl'] h3,
+  [dir='rtl'] h4 {
+    letter-spacing: 0;
+    line-height: 1.45;
+  }
+  ::selection {
+    background: var(--color-leaf-dark);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Thin amber underline for the key idea in a sentence */
+  .hl {
+    color: var(--color-leaf);
+  }
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-card;
+  }
+
+  /* Use together with .btn, e.g. "btn btn-primary" */
+  .btn {
+    @apply inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-xl px-5 text-[15px] font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-leaf text-white shadow-[0_0_24px_-6px_var(--color-leaf)] hover:bg-leaf-dark;
+  }
+  .btn-accent {
+    @apply bg-sun text-paper hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply border border-line bg-card text-ink hover:border-leaf hover:text-sky;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-md bg-paper-deep px-2.5 py-1 text-xs font-medium text-ink-soft;
+  }
+  .field {
+    @apply w-full rounded-xl border border-line bg-card px-4 py-2.5 text-sm text-ink outline-none placeholder:text-muted/70 focus:border-sky focus:ring-4 focus:ring-sky/10;
+  }
+  /* Faint dot grid like the cover background */
+  .dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-soft;
+  }
+}
